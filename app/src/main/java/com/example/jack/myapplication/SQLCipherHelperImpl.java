@@ -1,8 +1,8 @@
 package com.example.jack.myapplication;
 
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
+import com.raizlabs.android.dbflow.sqlcipher.SQLCipherOpenHelper;
 import com.raizlabs.android.dbflow.structure.database.DatabaseHelperListener;
-import com.raizlabs.dbflow.android.sqlcipher.SQLCipherOpenHelper;
 
 public class SQLCipherHelperImpl extends SQLCipherOpenHelper {
 

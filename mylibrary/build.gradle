@@ -12,6 +12,7 @@ android {
         versionName "1.0"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,13 +24,15 @@ android {
 repositories {
     maven { url "https://www.jitpack.io" }
 }
+
 apt {
     arguments {
         targetModuleName 'Module'
     }
 }
+
 dependencies {
-    def dbflow_version = "3.0.1"
+    def dbflow_version = "4.0.3"
     apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
