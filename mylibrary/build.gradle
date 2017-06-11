@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
@@ -11,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [targetModuleName: "MyLibrary"]
+            }
+        }
     }
 
     buildTypes {
@@ -21,23 +25,12 @@ android {
     }
 }
 
-repositories {
-    maven { url "https://www.jitpack.io" }
-}
-
-apt {
-    arguments {
-        targetModuleName 'Module'
-    }
-}
-
 dependencies {
-    def dbflow_version = "4.0.3"
-    apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-    compile 'net.zetetic:android-database-sqlcipher:3.5.7'
-
+    def dbflow_version = "develop-SNAPSHOT"
+    annotationProcessor "com.github.trevjonez.DBFlow:dbflow-processor:${dbflow_version}"
+    compile "com.github.trevjonez.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.trevjonez.DBFlow:dbflow-sqlcipher:${dbflow_version}"
+    compile "com.github.trevjonez.DBFlow:dbflow:${dbflow_version}"
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'net.zetetic:android-database-sqlcipher:3.5.7'
 }
